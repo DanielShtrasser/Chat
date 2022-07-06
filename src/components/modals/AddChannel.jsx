@@ -46,6 +46,9 @@ const AddChannelForm = ({ onHide, toast }) => {
       }) => (
         <Form onSubmit={handleSubmit}>
           <Form.Group>
+            <Form.Label className="visually-hidden" htmlFor="name">
+              {t('modals.common.channelName')}
+            </Form.Label>
             <Form.Control
               name="name"
               aria-label={t('labels.channelName')}

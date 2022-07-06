@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
-  Form, Button, Spinner, Card,
+  Form, Button, Spinner, Card, FloatingLabel
 } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
@@ -83,10 +83,9 @@ const Login = ({ toast }) => {
                 onSubmit={handleSubmit}
               >
                 <h1 className="text-center mb-4">{t('buttons.logIn')}</h1>
-                <Form.Floating className="mb-3">
+                <FloatingLabel label={t('labels.yourNickname')} className="mb-3" controlId="username">
                   <Form.Control
                     name="username"
-                    id="username"
                     placeholder={t('labels.yourNickname')}
                     autoComplete="username"
                     required
@@ -96,13 +95,12 @@ const Login = ({ toast }) => {
                     readOnly={isSubmitting}
                     ref={usernameRef}
                     isInvalid={!!error}
+                    aria-label={t('labels.yourNickname')}
                   />
-                  <label htmlFor="username">{t('labels.yourNickname')}</label>
-                </Form.Floating>
-                <Form.Floating className="mb-4">
+                </FloatingLabel>
+                <FloatingLabel label={t('labels.password')} className="mb-4" controlId="password">
                   <Form.Control
                     name="password"
-                    id="password"
                     placeholder={t('labels.password')}
                     autoComplete="current-password"
                     required
@@ -112,11 +110,10 @@ const Login = ({ toast }) => {
                     readOnly={isSubmitting}
                     isInvalid={!!error}
                   />
-                  <label htmlFor="password">{t('labels.password')}</label>
                   <Form.Control.Feedback type="invalid" tooltip>
                     {t(`errors.${error}`)}
                   </Form.Control.Feedback>
-                </Form.Floating>
+                </FloatingLabel>
                 <Button
                   type="submit"
                   variant="outline-primary"
