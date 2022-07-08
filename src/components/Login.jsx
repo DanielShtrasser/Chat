@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
-  Form, Button, Spinner, Card, FloatingLabel
+  Form, Button, Spinner, Card, FloatingLabel,
 } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
