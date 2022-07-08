@@ -27,4 +27,7 @@ deploy:
 test:
 	npm test -s
 
+test-coverage:
+	npm test --coverage
+
 .PHONY: test
