@@ -4,23 +4,41 @@ on: [push]
 
 jobs:
   lint:
+    name: run linter
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
       with:
         node-version: '16.x'
-    - name: npm install, build
-      run:
-        make install
-    - name: Run linter
-      run:
-        make lint
-    - name: Test & publish code coverage
-      uses: paambaati/codeclimate-action@v2.6.0
+    - run: make install
+    - run: make build
+    - run: make lint
+  test:
+    name: run tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '16.x'
+    - run: make install
+    - run: make build
+    - run: make test
+  coverage:
+    needs: [ test ]
+    name: test coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '16'
+    - run: make install
+    - run: make build
+    - uses: paambaati/codeclimate-action@v2.6.0
       env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMAT }}
+        CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE }}
       with:
         coverageCommand: make test-coverage
         debug: true
