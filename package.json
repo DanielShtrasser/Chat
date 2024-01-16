@@ -5,7 +5,7 @@
   "main": "src/init.jsx",
   "type": "module",
   "engines": {
-    "node": "16.x"
+    "node": "20.x"
   },
   "scripts": {
     "test": "npx -n --experimental-vm-modules jest",
@@ -84,8 +84,11 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.2",
+    "jest-cli": "^26.4.2",
+    "jsdom": "^19.0.0",
     "msw": "^0.42.3",
-    "node-sass": "^6.0.0",
+    "node-sass": "^9.0.0",
     "nodemon": "^2.0.7",
     "postcss-loader": "^5.2.0",
     "postcss-preset-env": "^6.7.0",
@@ -94,9 +97,6 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2",
-    "jsdom": "^19.0.0",
-    "jest": "^26.4.2",
-    "jest-cli": "^26.4.2"
+    "webpack-dev-server": "^3.11.2"
   }
 }
